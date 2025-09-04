@@ -33,7 +33,6 @@ header {
     filter: blur(16px) grayscale(0.1);
 }
 .homescreen-leaderboard {
-    display: none;
     padding: 20px 32px;
 }
 .intro-homescreen-bg {
