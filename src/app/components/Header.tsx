@@ -9,7 +9,7 @@ export default function Header(){
                         <Image src="/chromestars-stars-logo.png" height="32" width="272" alt="Chromestars logo" />
                     </a>
                     <div className="nav__right">
-                        <a className="nav__hover" href="/event">EVENTS</a>
+                        <a className="nav__hover" href="/events">EVENTS</a>
                         <a className="nav__hover" href="/history">HISTORY</a>
                         <a className="nav__hover" href="/">LEADERBOARD</a>
                         <div className="nav-right__search nav__hover">SEARCH</div>
