@@ -44,53 +44,54 @@ export default function Leaderboard({users}: LeaderboardProps){
 
     return (
     <div className="homescreen-leaderboard">
-      <div className="racers">
-        <div className="racers-header">
-          <div className="racers-header__standing"></div>
-          <h3 className="racers-header__alias">DRIVER</h3>
-          <h3 className="racers-header__score">SCORE</h3>
-          <h3 className="racers-header__elo">ELO RATING</h3>
-          <h3 className="racers-header__wins">TOTAL WINS</h3>
-          <h3 className="racers-header__competitions">COMPETITIONS</h3>
-          <h3 className="racers-header__avg-pos">AVERAGE POSITION</h3>
+    <h1 className="text-3xl font-bold mb-8">LEADERBOARD</h1>
+        <div className="racers">
+            <div className="racers-header">
+            <div className="racers-header__standing"></div>
+            <h3 className="racers-header__alias">DRIVER</h3>
+            <h3 className="racers-header__score">SCORE</h3>
+            <h3 className="racers-header__elo">ELO RATING</h3>
+            <h3 className="racers-header__wins">TOTAL WINS</h3>
+            <h3 className="racers-header__competitions">COMPETITIONS</h3>
+            <h3 className="racers-header__avg-pos">AVERAGE POSITION</h3>
+            </div>
+
+            {sortedUsers.map((user, index) => {
+                const streak = calculateStreak(user);
+                const avgPos = avgPosition(user);
+
+                return (
+                    <a
+                    key={user._id}
+                    href={`/racer/${user.username}`}
+                    className="racer"
+                    data-id={user._id}
+                    >
+                    <div className="racers-row__standing">{index + 1}.</div>
+
+                    <div className="racers-row__alias">
+                        <img className="racers-row__img" src={user.profile_image} alt="" />
+                        {user.username}
+                        {streak >= 3 && (
+                        <img
+                            className="racers-row__rocket"
+                            style={{ height: 20 }}
+                            src="rocket-icon.png"
+                        />
+                        )}
+                    </div>
+
+                    <div className="racers-row__score">{user.score}</div>
+                    <div className="racers-row__elo">{user.elo}</div>
+                    <div className="racers-row__wins">{user.wins}</div>
+                    <div className="racers-row__competitions">{user.competitions}</div>
+                    <div className="racers-row__avg-pos">
+                        <div className="racers-row__avg-pos-text">{avgPos.toFixed(1)}</div>
+                    </div>
+                    </a>
+                );
+            })}
         </div>
-
-        {sortedUsers.map((user, index) => {
-          const streak = calculateStreak(user);
-          const avgPos = avgPosition(user);
-
-          return (
-            <a
-              key={user._id}
-              href={`/racer/${user.username}`}
-              className="racer"
-              data-id={user._id}
-            >
-              <div className="racers-row__standing">{index + 1}.</div>
-
-              <div className="racers-row__alias">
-                <img className="racers-row__img" src={user.profile_image} alt="" />
-                {user.username}
-                {streak >= 3 && (
-                  <img
-                    className="racers-row__rocket"
-                    style={{ height: 20 }}
-                    src="rocket-icon.png"
-                  />
-                )}
-              </div>
-
-              <div className="racers-row__score">{user.score}</div>
-              <div className="racers-row__elo">{user.elo}</div>
-              <div className="racers-row__wins">{user.wins}</div>
-              <div className="racers-row__competitions">{user.competitions}</div>
-              <div className="racers-row__avg-pos">
-                <div className="racers-row__avg-pos-text">{avgPos.toFixed(1)}</div>
-              </div>
-            </a>
-          );
-        })}
-      </div>
     </div>
   );
 }
