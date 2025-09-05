@@ -161,9 +161,6 @@ h3 {
 html {
     position: relative;
 }
-header {
-    display: none;
-}
 .intro-homescreen-wrapper {
     /*display: none;*/
     position: absolute;
@@ -407,7 +404,100 @@ header {
     justify-content: center;
 }
 
-@media screen and (max-width: 1280px){
+/* HEADER STYLES */
+
+header {
+    padding: 0px 32px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.15s ease-in-out;
+}
+header.show {
+    background-color: #101010;
+}
+nav a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 0 16px;
+    transition: all 0.15s ease-in-out;
+    color: #ffffff;
+}
+nav .logo {
+    padding: 0;
+}
+.nav__hover {
+    padding: 24px 16px;
+}
+.nav__hover:hover {
+    color: #ffffffc9;
+}
+.nav-right__search {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 0 16px;
+}
+nav img {
+    position: relative;
+}
+.logo img {
+    top: -4px;
+}
+.account {
+    height: 40px;
+    transition: all 0.15s ease-in-out;
+}
+.account:hover {
+    opacity: 0.8;
+}
+.nav__right {
+    display: flex;
+    gap: 8px;
+    font-size: 15.21px;
+    font-weight: bold;
+    letter-spacing: 0.02rem;
+}
+.nav__admin {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.nav__admin span {
+    position: relative;
+    pointer-events: none;
+    padding: 0;
+}
+.nav__admin-sub-menu {
+    visibility: hidden;
+    opacity: 0;
+    display: flex;
+    position: absolute;
+    top: 67px;
+    left: 0;
+    gap: 8px;
+    height: fit-content;
+    border-top: 1px solid #ffffff27;
+    transition: all 0.15s ease-in-out;
+}
+.nav__admin:hover > .nav__admin-sub-menu, .nav__admin-sub-menu:hover {
+    display: flex;
+    visibility: visible;
+    opacity: 1;
+}
+header.show .nav__admin-sub-menu {
+    background-color: #101010;
+    border: 0;
+}
+header .nav__admin-sub-menu .nav__hover {
+    padding: 20px 16px;
+    height: fit-content;
+}
+
+@media screen and (max-width: 900px){
     header, .search-wrapper, .search-wrapper-overlay, .intro-homescreen-wrapper, .padding, .form, .homescreen-leaderboard {
         display: none !important;
     }
